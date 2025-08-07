@@ -7,13 +7,21 @@ on:
   # Triggers the workflow on push or pull request events
   push:
     branches:
-    - patch-1.7.3
+    - master
   pull_request:
     branches:
-    - patch-1.7.3
+    - master
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Select branch to build"
+        required: true
+        default: "patch-1.7.3"
+        type: choice
+        options:
+          - patch-1.7.3
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
