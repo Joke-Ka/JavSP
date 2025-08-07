@@ -58,6 +58,8 @@ def write_nfo(info: MovieInfo, nfo_file):
             break
     # 写入genre分类：优先使用genre_norm。在Jellyfin上，只有genre可以直接跳转，tag不可以
     # 也同时写入tag。TODO: 还没有研究tag和genre在Kodi上的区别
+    if info.serial:
+        genre.insert(0,info.serial)
     for i in genre:
         nfo.append(E.genre(i))
     if cfg.NFO.add_genre_to_tag:
